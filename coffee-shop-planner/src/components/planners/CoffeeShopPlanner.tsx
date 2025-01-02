@@ -3,11 +3,20 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Check, Coffee, Clock, AlertCircle } from 'lucide-react';
 
+interface TimelineSection {
+  timeline: string;
+  tasks: string[];
+}
+
+interface TimelineSections {
+  [key: string]: TimelineSection;
+}
+
 export default function CoffeeShopPlanner() {
   const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
   const [completedTasks, setCompletedTasks] = useState<{[key: string]: boolean}>({});
 
-  const timelineSections = {
+  const timelineSections: TimelineSections = {
     'Initial Planning': {
       timeline: 'Pre-planning phase',
       tasks: [
